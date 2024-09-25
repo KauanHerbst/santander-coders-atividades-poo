@@ -1,16 +1,14 @@
-import { gerarId } from "./util";
+import { gerarId } from "../Utils/util";
 import Categoria from "./Categoria";
 
 export default class Produto {
     private _id: string;
     private _nome: string;
-    private _categoria: Categoria;
     private _preco: number;
     private _image: string;
 
-    constructor(nome: string, categoria: Categoria, preco: number, image: string){
+    constructor(nome: string, preco: number, image: string){
         this._nome = nome;
-        this._categoria = categoria;
         this._preco = preco;
         this._image = image;
         this._id = gerarId();
@@ -26,14 +24,6 @@ export default class Produto {
 
     public set nome(novoNome: string){
         this._nome = novoNome;
-    }
-
-    public get categoria(){
-        return this._categoria;
-    }
-
-    public set categoria(novaCategoria: Categoria){
-        this._categoria = novaCategoria;
     }
 
     public get preco(){
@@ -56,12 +46,9 @@ export default class Produto {
         console.log("Adicionado novo produto " + this._nome);
     }
 
-    public editar(nome?: string, categoria?: Categoria, preco?: number, image?: string){
+    public editar(nome?: string, preco?: number, image?: string){
         if(nome){
             this._nome = nome
-        }
-        if(categoria){
-            this._categoria = categoria;
         }
         if(preco){
             this._preco = preco;
