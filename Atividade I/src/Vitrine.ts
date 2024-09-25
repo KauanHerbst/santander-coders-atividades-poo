@@ -2,68 +2,80 @@ import Produto from "./Produto";
 import Categoria from "./Categoria";
 
 export default class Vitrine{
-    listaProdutosDestaques: Array<Produto>;
-    listaProdutosPromocoes: Array<Produto>;
-    listaCategorias: Array<Categoria>;
+    private _listaProdutosDestaques: Array<Produto>;
+    private _listaProdutosPromocoes: Array<Produto>;
+    private _listaCategorias: Array<Categoria>;
 
     constructor(){
-        this.listaProdutosDestaques = new Array<Produto>();
-        this.listaProdutosPromocoes = new Array<Produto>();
-        this.listaCategorias = new Array<Categoria>();
-    }
-    
-    adicionarDestaque(produto: Produto){
-        this.listaProdutosDestaques.push(produto);
+        this._listaProdutosDestaques = new Array<Produto>();
+        this._listaProdutosPromocoes = new Array<Produto>();
+        this._listaCategorias = new Array<Categoria>();
     }
 
-    removerDestaque(produto: Produto){
-        if(this.listaProdutosDestaques.includes(produto)){
-            const indiceProduto = this.listaProdutosDestaques.indexOf(produto);
-            this.listaProdutosDestaques.splice(indiceProduto, 1);
+    public get listaProdutosDestaques(){
+        return this._listaProdutosDestaques;
+    }
+
+    public get listaProdutosPromocoes(){
+        return this._listaProdutosPromocoes;
+    }
+
+    public get listaCategorias(){
+        return this._listaCategorias;
+    }
+    
+    public adicionarDestaque(produto: Produto){
+        this._listaProdutosDestaques.push(produto);
+    }
+
+    public removerDestaque(produto: Produto){
+        if(this._listaProdutosDestaques.includes(produto)){
+            const indiceProduto = this._listaProdutosDestaques.indexOf(produto);
+            this._listaProdutosDestaques.splice(indiceProduto, 1);
             return;
         }
         console.log("Produto não esta na lista de produtos em destaques");
     }
 
-    adicionarPromocao(produto: Produto){
-        this.listaProdutosPromocoes.push(produto);
+    public adicionarPromocao(produto: Produto){
+        this._listaProdutosPromocoes.push(produto);
     }
 
-    removerPromocao(produto: Produto){
-        if(this.listaProdutosPromocoes.includes(produto)){
-            const indiceProduto = this.listaProdutosPromocoes.indexOf(produto);
-            this.listaProdutosPromocoes.splice(indiceProduto, 1);
+    public removerPromocao(produto: Produto){
+        if(this._listaProdutosPromocoes.includes(produto)){
+            const indiceProduto = this._listaProdutosPromocoes.indexOf(produto);
+            this._listaProdutosPromocoes.splice(indiceProduto, 1);
             return;
         }
         console.log("Produto não esta na lista de produtos em promoção");  
     }
 
-    adicionarCategoria(categoria: Categoria){
-        this.listaCategorias.push(categoria);
+    public adicionarCategoria(categoria: Categoria){
+        this._listaCategorias.push(categoria);
     }
 
-    listarCategorias(){
-        if(this.listaCategorias.length > 0){
+    public listarCategorias(){
+        if(this._listaCategorias.length > 0){
             console.log("Listando Categorias: ");
-            this.listaCategorias.forEach((categoria) => console.log(categoria.nome));
+            this._listaCategorias.forEach((categoria) => console.log(categoria.nome));
             return;
         }
         console.log("Nenhuma categoria cadastrada");
     }
 
-    listarDestaques(){
-        if(this.listaProdutosDestaques.length > 0){
+    public listarDestaques(){
+        if(this._listaProdutosDestaques.length > 0){
             console.log("Listando Produtos em Destaques: ");
-            this.listaProdutosDestaques.forEach((produto) => console.log(produto.nome));
+            this._listaProdutosDestaques.forEach((produto) => console.log(produto.nome));
             return;
         }
         console.log("Nenhum produto em destaque");
     }
 
-    listarPromocoes(){
-        if(this.listaProdutosPromocoes.length > 0){
+    public listarPromocoes(){
+        if(this._listaProdutosPromocoes.length > 0){
             console.log("Listando produtos em promoção: ");
-            this.listaProdutosPromocoes.forEach((produto) => console.log(produto.nome));
+            this._listaProdutosPromocoes.forEach((produto) => console.log(produto.nome));
             return;
         }
         console.log("Nenhum produto em promoção");
