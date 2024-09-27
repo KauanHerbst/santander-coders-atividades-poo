@@ -5,7 +5,7 @@ export default class ProdutoEletronico extends Produto {
     private _categoria: Categoria;
     private _voltagem: string;
 
-    constructor(nome: string, categoria: Categoria, preco: number, voltagem: string, image: string){
+    constructor(nome: string, categoria: Categoria, preco: number, image: string, voltagem: string){
         super(nome, preco, image);
         this._categoria = categoria;
         this._voltagem = voltagem;

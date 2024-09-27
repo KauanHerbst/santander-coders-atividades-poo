@@ -6,7 +6,7 @@ export default class ProdutoRoupa extends Produto{
     private _cor: string;
     private _categoria: Categoria;
 
-    constructor(nome: string, categoria: Categoria, preco: number, tamanho: string, cor: string, image: string){
+    constructor(nome: string, categoria: Categoria, preco: number, image: string, tamanho: string, cor: string){
         super(nome, preco, image);
         this._categoria = categoria;
         this._cor = cor;

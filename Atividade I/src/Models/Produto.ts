@@ -1,11 +1,11 @@
+import IProduto from "../Interfaces/IProduto";
 import { gerarId } from "../Utils/util";
-import Categoria from "./Categoria";
 
-export default class Produto {
+export default class Produto implements IProduto {
     private _id: string;
     private _nome: string;
     private _preco: number;
-    private _image: string;
+    _image: string;
 
     constructor(nome: string, preco: number, image: string){
         this._nome = nome;
@@ -34,27 +34,24 @@ export default class Produto {
         this._preco = novoPreco;
     }
  
-    public get image(){
-        return this._image;
-    }
-
-    public set image(novaImagem: string){
-        this._image = novaImagem;
-    }
-
     public novo(){
         console.log("Adicionado novo produto " + this._nome);
     }
 
-    public editar(nome?: string, preco?: number, image?: string){
+
+    public detalhesProduto(){
+        console.log("Detalhes Produto...");
+        console.log("Nome: " + this._nome);
+        console.log("Preço: " + this._preco);
+
+    }
+
+    public editar(nome?: string, preco?: number){
         if(nome){
             this._nome = nome
         }
         if(preco){
             this._preco = preco;
-        }
-        if(image){
-            this._image = image;
         }
     }
 
